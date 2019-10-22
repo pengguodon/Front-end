@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+      #wrap {
+         position: absolute;
+         background-color: pink;
+         left: 100px;
+         top: 50px;
+      }
+
+      #inner1 {
+         position: fixed;
+         background-color: deeppink;
+         left: 50px;
+         top: 150px;
+      }
+
+      #inner2 {
+         position: relative;
+         background-color: hotpink;
+         left: 80px;
+         top: 70px;
+
+      }
+
+      #inner3 {
+         /* position: fixed; */
+         background-color: yellow;
+         left: 60px;
+         top: 30px;
+      }
+
+      div {
+         width: 200px;
+         height: 200px;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="wrap">wrap
+      <div id="inner1">inner1
+         <div id="inner2">inner2
+            <div id="inner3">inner3</div>
+         </div>
+      </div>
+   </div>
+</body>
+<script>
+   window.onload = function () {
+      //    ============================================================================
+      //    本身定位为fixed
+      //               ===> offsetParent:null (ie7以上不是火狐)
+      //          虽然你是null,offsetLeft和offsetTop都是依照body
+      //               ===> offsetParent:body (火狐)
+      //    本身定位不为fixed
+      //             父级没有定位
+      //               ===> offsetParent:body
+      //             父级有定位
+      //               ===> offsetParent:定位父级
+      // ====================================================================
+   }
+</script>
+
+
+</html>

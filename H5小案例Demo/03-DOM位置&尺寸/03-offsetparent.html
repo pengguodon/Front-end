@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+</head>
+<body>
+<script>
+//  offsetParent
+//  1.父级是否有定位(四种)
+//  2.本身是否有定位(四种)
+//  3.浏览器不一样(5大pc端+老祖宗 ie 6.7.8)
+//   4*4*4  = 128种
+
+
+/*
+ offsetParent(前提 如果body和html直接的margin被清除)
+
+  ie7以上(不是火狐)
+     简写:
+        本身定位为fixed  ===> offsetParent:null
+        本身定位不为fixed:
+                父级没有定位 ===>offsetParent:body
+                父级有定位 ===> offsetParent:定位父级
+
+   火狐
+      简写
+         本身定位为fixed ===> offsetParent:body
+         本身定位不为fixed
+                 父级没有定位 ===> offsetParent:body
+                 父级有定位 ===> offsetParent:定位父级
+
+   再简写!!
+
+   ============================================================================
+      本身定位为fixed
+                 ===> offsetParent:null (ie7以上不是火狐)
+                 ===> offsetParent:body (火狐)
+      本身定位不为fixed
+               父级没有定位
+                 ===> offsetParent:body
+               父级有定位
+                 ===> offsetParent:定位父级
+
+   ====================================================================
+*/
+
+
+</script>
+</body>
+</html>

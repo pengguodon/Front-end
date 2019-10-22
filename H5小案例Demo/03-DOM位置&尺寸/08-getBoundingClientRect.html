@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+      *{
+         margin: 0;
+         padding: 0;
+      }
+     html,body{
+        height: 100%;
+        overflow: hidden;
+     }
+     #wrap{
+        position: absolute;
+        background-color: pink;
+        left: 200px;
+        top: 200px;
+     }
+     #inner1{
+        position: absolute;
+        background-color: deeppink;
+        left: 100px;
+        top: 100px;
+     }
+     div{
+        width: 200px;
+        height: 200px;
+     }
+   </style>
+</head>
+
+<body>
+   <div id="wrap">wrap
+      <div id="inner1">inner1
+      </div>
+      </div>
+   </div>
+</body>
+<script>
+   window.onload = function () {
+   //   获取元素在页面中的位置
+   //   绝对位置:到body的距离
+   //   相对位置:到视口的距离
+
+   // can i use
+   // 这是神器,兼容性极其的好
+   var inner1 = document.querySelector('#inner1');
+   var get =inner1.getBoundingClientRect()
+   console.log(get)
+
+   }
+</script>
+
+
+</html>

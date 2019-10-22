@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+</head>
+
+<body>
+   <li>pengguodon<a href="javascript:;">删除</a></li>
+   <li>pengguodon11<a href="javascript:;">删除</a></li>
+   <li>pengguodo222n<a href="javascript:;">删除</a></li>
+   <li>pengguodon33<a href="javascript:;">删除</a></li>
+   <li>pengguodon444<a href="javascript:;">删除</a></li>
+   <li>pengguodon555<a href="javascript:;">删除</a></li>
+   </ul>
+</body>
+<script>
+   window.onload = function () {
+      //假删除
+      // 数据是最重要的!!!!
+      var aNodeS = document.querySelectorAll('.list > li > a');
+      for (var i = 0; i < aNodeS.length; i++) {
+         aNodeS[i].onclick = function () {
+            //这里该用this,不能用aNode[i]
+            this.parentNode.style.display = 'none';
+         }
+      }
+   }
+</script>
+
+
+</html>
