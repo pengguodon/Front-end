@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    </meta>
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            /* background-color: skyblue; */
+        }
+
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #wrap,
+        ul,
+        li {
+            height: 100%;
+        }
+
+        ul>li {
+            background: url(./background2.jpg);
+            /*  */
+            background-size: 100%
+        }
+
+        canvas {
+            /* height: 100%; */
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: 2s;
+        }
+
+        /*
+		
+			不能在css里面设定画布的高宽
+
+		 */
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <canvas></canvas>
+        <ul>
+            <li></li>
+        </ul>
+
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        var canvas = document.querySelector("canvas")
+        canvas.width = document.documentElement.clientWidth;
+        canvas.height = document.documentElement.clientHeight;
+
+        // console.log(canvas);
+        if (canvas.getContext) {
+           
+            var ctx = canvas.getContext("2d");
+            var img = new Image();
+            img.src = "./background3.jpg";
+            img.onload = function () {
+                draw();
+            }
+            function draw() {
+                var flag = 0;
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+
+                // 移动端用手指点的事件
+                canvas.addEventListener("touchstart", function (ev) {
+                    ev = ev || event;
+                    var touchC = ev.changedTouches[0];
+                    // 拿到第一个手指  changeTouches 手指列表
+
+                    var x = touchC.clientX - canvas.offsetLeft;
+                    var y = touchC.clientY - canvas.offsetTop;
+
+
+                    ctx.save();
+                    ctx.globalCompositeOperation = "destination-out"
+                    ctx.lineWidth = 40;
+                    ctx.lineCap = "round";
+                    ctx.lineJoin = "round";
+                    // 加帽子,环绕
+                    ctx.beginPath();
+                    // ctx.arc(x,y,20,0,360*Math.PI/180);
+                    ctx.moveTo(x, y);
+                    ctx.lineTo(x + 1, y + 1);
+                    ctx.stroke()
+                    // ctx.fill();
+                    ctx.restore();
+                });
+                canvas.addEventListener("touchmove", function (ev) {
+                    ev = ev || event;
+                    var touchC = ev.changedTouches[0];
+                    // 拿到第一个手指  changeTouches 手指列表
+
+                    var x = touchC.clientX - canvas.offsetLeft;
+                    var y = touchC.clientY - canvas.offsetTop;
+
+
+                    ctx.save();
+                    ctx.globalCompositeOperation = "destination-out"
+                    ctx.lineWidth = 45;
+                    ctx.lineCap = "round";
+                    ctx.lineJoin = "round";
+                    // ctx.beginPath();
+                    ctx.moveTo(x, y);
+                    ctx.lineTo(x + 1, y + 1);
+                    ctx.stroke()
+                    // ctx.fill();
+                    // ctx.fill();
+                    ctx.restore();
+                })
+                canvas.addEventListener("touchend", function () {
+                    
+                    var imgData=ctx.getImageData(0,0,canvas.width,canvas.height); 
+                    var allPx = imgData.width * imgData.height;
+                    // console.log(allPx)
+                    for (var i = 0; i < allPx; i++) {
+                        if (imgData.data[4 * i + 3] === 0) {
+                            flag++;
+                            // console.log(flag)
+                        }
+                    }
+                    if (flag >= allPx / 2) {
+                            canvas.style.opacity = 0;
+                        }
+                })
+                canvas.addEventListener("transitionend",function(){
+                    this.remove();
+                })
+            }
+
+
+        }
+
+
+
+    }
+
+
+
+</script>
+
+</html>

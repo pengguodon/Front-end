@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+      body,html{
+          width: 100%;
+          background-color: black;
+      }
+      .wrap{
+        margin: 120px auto;
+        width: 1500px;
+        border-radius: 30px;
+        overflow: hidden;
+      }
+      #signature{
+          background-color: #e0e0e0;
+      }
+    </style>
+    <link rel="stylesheet" href="./animate.css"> 
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrap animated fadeInDownBig" ><canvas id="signature" height="600" width="1500"></canvas></div>
+</body>
+<script>
+    
+    let canvas = document.querySelector("#signature");
+    var div = document.querySelector(".wrap")
+    if(canvas.getContext){
+        let ctx = canvas.getContext("2d");
+        if(canvas.getCapture){
+            canvas.setCapture();
+        }
+        //给画布注册点击事件
+        canvas.onmousedown = function (e){
+            var e = e || even ;
+            ctx.beginPath();
+            ctx.moveTo(e.clientX - div.offsetLeft,e.clientY - div.offsetTop);
+            document.onmousemove = function (e){
+                ctx.save();
+                ctx.strokeStyle = "#c40000";
+                ctx.lineWidth = "15";
+                e = e || even;
+                ctx.lineTo(e.clientX - div.offsetLeft,e.clientY - div.offsetTop);
+                ctx.stroke();
+                ctx.restore();
+            }
+            document.onmouseup = function(){
+                document.onmousemove = null;
+            }
+
+        }
+    }
+
+
+</script>
+</html>

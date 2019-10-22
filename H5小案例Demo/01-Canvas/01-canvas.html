@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		*{
+		   margin: 0;
+		   padding: 0;
+		   background-color: skyblue;
+		}
+		#test{
+			background-color: gray;
+			position:absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+		}
+
+		/*
+		
+			不能在css里面设定画布的高宽
+
+		 */
+		</style>
+	</head>
+	<body>
+		<canvas id="test" ></canvas>
+	</body>
+	<script>
+	window.onload  =  function(){
+		var canvas = document.querySelector("#test")
+		// var canvas = document.getElementById('test')
+		// 
+		console.log(canvas);
+		if(canvas.getContext){
+			var ctx = canvas.getContext("2d");
+
+
+			// fillStyle是填充颜色
+			ctx.fillStyle="green";
+
+			// 画线的颜色
+			ctx.strokeStyle="yellow";
+
+			// 线的宽度
+			// 数值必须为负数 默认值1像素
+			// 
+			ctx.lineWidth="10";
+
+
+			// 不能加单位
+			// 填充的矩形
+			ctx.fillRect(0,0,100,100)
+
+			// 带边框的矩形
+			// ctx.strokeRect(110,10,100,100)
+
+			ctx.strokeRect(100,100,100,100)
+			// 清楚(实际上是在更上一层叠加一个和背景色一样的矩形来掩盖)
+			// ctx.clearRect(100,100,100,100)
+
+
+			
+		}
+
+	}
+	</script>
+</html>

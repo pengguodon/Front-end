@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-color: skyblue;
+        }
+
+        #test {
+            background-color: gray;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        /*
+		
+			不能在css里面设定画布的高宽
+
+		 */
+    </style>
+</head>
+
+<body>
+    <canvas id="test"></canvas>
+</body>
+<script>
+    window.onload = function () {
+        var canvas = document.querySelector("#test")
+        // var canvas = document.getElementById('test')
+        // 
+        // console.log(canvas);
+        if (canvas.getContext) {
+            var ctx = canvas.getContext("2d");
+            ctx.fillStyle = "pink";
+            ctx.save();
+            ctx.beginPath();
+            ctx.fillRect(50, 50, 100, 100);
+            ctx.restore();
+
+            var imgdata = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+            var color = getPxInfo(imgdata, 50, 50);
+            console.log(color);
+            setPxInfo(imgdata, 50, 50, [0, 0, 0, 255]);
+            ctx.putImageData(imgdata, 0, 0)
+        }
+
+        // 获取像素区域
+        function getPxInfo(imgdata, x, y) {
+            var color = []
+            var data = imgdata.data;
+            var w = imgdata.width;
+            var h = imgdata.height;
+            color[0] = data[(y * w + x) * 4];
+            color[1] = data[(y * w + x) * 4 + 1];
+            color[2] = data[(y * w + x) * 4 + 2];
+            color[3] = data[(y * w + x) * 4 + 3];
+            return color;
+        }
+
+        // 设置像素区域颜色
+        function setPxInfo(imgdata, x, y, color) {
+            // var color = []
+            var data = imgdata.data;
+            var w = imgdata.width;
+            var h = imgdata.height;
+            data[(y * w + x) * 4] = color[0];
+            data[(y * w + x) * 4 + 1] = color[1];
+            data[(y * w + x) * 4 + 2] = color[2];
+            data[(y * w + x) * 4 + 3] = color[3];
+            // return color; 
+        }
+
+    }
+</script>
+
+</html>

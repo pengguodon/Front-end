@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		*{
+		   margin: 0;
+		   padding: 0;
+		   background-color: skyblue;
+		}
+		#test{
+			background-color: gray;
+			position:absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+		}
+
+		/*
+		
+			不能在css里面设定画布的高宽
+
+		 */
+		</style>
+	</head>
+	<body>
+		<canvas id="test" ></canvas>
+	</body>
+	<script>
+	window.onload  =  function(){
+		var canvas = document.querySelector("#test")
+		// var canvas = document.getElementById('test')
+		// 
+		console.log(canvas);
+		if(canvas.getContext){
+			var ctx = canvas.getContext("2d");
+			ctx.fillStyle = "pink"
+            ctx.fillRect(0,0,100,100);
+            // debugger
+			// 100*100个像素点
+			var imgData=ctx.getImageData(0,0,100,100); 
+			console.log(imgData)
+			/*
+			 data:  数组 四倍像素点长度
+			 		每一个像素点的信息,每四个代表一个像素,rbga()的形式,透明度是0-255,于css不同 
+			 width:横向上像素点的个数
+			 height:纵向上像素点的个数      
+
+			*/
+			// 创建
+				var imgData = ctx.createImageData(100,100);
+				// 创建大小,偏移量在写入的时候设置
+			  
+			for(var i = 0;i < imgData.data.length;i++) {
+				imgData.data[4*i+3] = 155;
+				// 改了要写入
+			
+			// 在场景中写入数据
+				ctx.putImageData(imgData,100,100);
+
+
+				
+			}
+		}
+
+
+        //  得到场景像素数据
+        // getImageDate() : 获得一个包含画布场景
+        // ctx.getImageDate(sx,sy,sw,sh);
+		// 
+		// 写入
+		// putImagedata();
+
+		// 创建一个imageData对象
+		// ctx.createImageData(width,height)
+		// 新对象的width
+		// 新对象的高度
+		// 默认创造出来是透明的
+	}
+	</script>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .body,
+        html {
+            /* background-color: black; */
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(to right, black, gray);
+            padding: 0;
+            margin: 0;
+        }
+
+        .test {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            background-color: #e0e0e0;
+            border-radius: 30px;
+
+        }
+    </style>
+    <link rel="stylesheet" href="./animate.css">
+</head>
+
+<body>
+    <canvas class="test animated fadeInLeft " width="1200" height="600"></canvas>
+</body>
+<script>
+    window.onload = function () {
+        var canvas = document.querySelector(".test");
+        if (canvas.getContext) {
+            var ctx = canvas.getContext("2d");
+            var img = new Image();
+            img.src = "./background.jpg";
+            img.onload = function () {
+                draw();
+
+            }
+
+            // 线性渐变
+            function draw(){
+                // 控制渐变的坐标方向
+                var gradient = ctx.createLinearGradient(0,0,300,300)
+
+                // 返回的对象中有addColorStop() ,控制颜色
+                gradient.addColorStop(0,"red");
+                gradient.addColorStop(0.5,"yellow");
+                gradient.addColorStop(0.7,"black");
+                gradient.addColorStop(1,"green")
+
+                ctx.fillStyle = gradient
+                ctx.fillRect(0,0,300,300)
+            }
+
+            function draw(){
+                // 控制渐变的坐标方向
+                // ctx.createRadialGradient(x1,y1,r1,x2,y2,r2)
+                var gradient = ctx.createRadialGradient(150,150,50,150,150,100)
+
+                // 返回的对象中有addColorStop() ,控制颜色
+                gradient.addColorStop(0,"red");
+                gradient.addColorStop(0.5,"yellow");
+                gradient.addColorStop(0.7,"black");
+                gradient.addColorStop(1,"green")
+
+                ctx.fillStyle = gradient
+                ctx.fillRect(0,0,300,300)
+            }
+
+        }
+
+    }
+
+</script>
+
+</html>

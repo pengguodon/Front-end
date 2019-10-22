@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		*{
+		   margin: 0;
+		   padding: 0;
+		   background-color: skyblue;
+		}
+		#test{
+			background-color: gray;
+			position:absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+		}
+
+		/*
+		
+			不能在css里面设定画布的高宽
+
+		 */
+		</style>
+	</head>
+	<body>
+		<canvas id="test" ></canvas>
+	</body>
+	<script>
+	window.onload  =  function(){
+        var canvas = document.querySelector("#test")
+		if(canvas.getContext){
+            var ctx = canvas.getContext("2d");
+        //  
+        // translate(x,y)  移动对应画布ctx的canvas的原点 x是左右偏移量,y是上下偏移量
+
+
+        // rotate(弧度) 只接受一个参数,顺时针方向   累加的,
+
+        // 
+		}   
+
+	}
+    </script>
+    
+</html>

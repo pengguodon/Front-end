@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		*{
+		   margin: 0;
+		   padding: 0;
+		   background-color: skyblue;
+		}
+		#test{
+			background-color: gray;
+			position:absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+		}
+
+		/*
+		
+			不能在css里面设定画布的高宽
+
+		 */
+		</style>
+	</head>
+	<body>
+		<canvas id="test" ></canvas>
+	</body>
+	<script>
+	window.onload  =  function(){
+        var canvas = document.querySelector("#test")
+        console.log(canvas)
+		// var canvas = document.getElementById('test')
+        
+        canvas.width = "1000",
+        canvas.height = "300"
+		// console.log(canvas);
+		if(canvas.getContext){
+            var ctx = canvas.getContext("2d");
+            ctx.beginPath();
+            // ctx.moveTo(100,100);
+            ctx.arc(100,100,50,0,300*Math.PI/180);
+            
+            
+
+            // 画弧,三点 还有一个默认点是moveTo()
+            ctx.moveTo(150,150)
+            ctx.arcTo(300,100,300,200,50)
+            // ctx.arcTo(x,y,x,y,半径radius)
+            ctx.stroke()
+		}   
+
+	}
+	</script>
+</html>

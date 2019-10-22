@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		*{
+		   margin: 0;
+		   padding: 0;
+		   background-color: skyblue;
+		}
+		#test{
+			background-color: gray;
+			position:absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+		}
+		</style>
+	</head>
+	<body>
+		<canvas id="test" ></canvas>
+	</body>
+	<script>
+	window.onload  =  function(){
+		var canvas = document.querySelector("#test")
+		// console.log(canvas);
+		if(canvas.getContext){
+			var ctx = canvas.getContext("2d");
+
+			// 1.路径容器
+				// 每次调用路径api时，都会往路径容器里做登记
+				// 调用beginPath时，清空整个路径容器
+			// 2.样式容器
+				// 每次调用样式api时，都会往样式容器里做登记
+				// 调用save时候，都会将样式容器里的状态压入样式栈
+				// 调用restrore时，将样式栈的栈顶状态弹出到样式容器里，进行覆盖
+			// 3.样式栈
+
+
+			ctx.save();
+			// 关于样式的设置
+			// save 和 resstrore 成对出现
+			ctx.beginPath();
+			// 关于路径
+			ctx.restrore();
+
+		}
+
+	}
+	</script>
+</html>
