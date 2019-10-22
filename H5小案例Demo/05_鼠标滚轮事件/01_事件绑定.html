@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+   html,body{
+      height: 100%;
+      overflow: hidden;
+
+   }
+   div{
+      height: 200px;
+      width: 200px;
+      margin: 200px auto;
+      background-color: deeppink;
+   }
+   </style>
+</head>
+<body>
+   <div></div>
+<script>
+   window.onload = function(){
+      var testNode  = document.querySelector('div');
+
+
+      // 非火狐浏览器能用
+      testNode.onmousewheel = function(){
+         console.log('gugugugu')
+      }
+
+
+      // 火狐
+      if(testNode.addEventListener){
+         testNode.addEventListener('DOMMouseScroll',function(){
+         console.log('火狐滚')
+      })
+      }
+
+
+
+   }
+
+</script>
+</body>
+</html>
