@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+	
+	<!-- chrome内核本地视频不可拖拽播放,网络视频可以 -->
+   <video width="800" height="700" controls="controls">
+   	<source src="02.mp4" type="video/mp4" ></source>
+   	当前浏览器不支持 video直接播放，点击这里下载视频： <a href="02.mp4">下载视频</a>
+   </video>
+   <audio src="01.mp3" controls="controls"></audio>
+</body>
+
+	<!--
+        video标签的属性  (标签里的属性)
+        
+        width : 视频显示区域的宽度,单位是css像素
+        height : 视频显示区域的高度,单位是css像素
+        poster :　一个海报帧的url ,用于在用户播放或者跳帧之前显示
+
+        src :　要嵌到页面的视频的ＵＲＬ；
+        controls : 显示或隐藏用户控制界面
+        autoplay : 媒体是否自动播放
+        loop　：　媒体是否循环播放
+        muted : 是否静音
+        preload : 该属性旨在告诉浏览器作者认为达到最佳的用户体验方式是什么
+                none : 表示用户不查看视频,服务器也想最小化访问流量,就是不进行缓存
+                (默认值)metadata : 提示尽管作者认为用户不需要查看该视频,
+                            不过抓取元数据,(如长度) 还是很合理的;
+                auto : 就是用户需要视频提前优先加载,会跑流量
+                空字符串 : 也就是指代 auto值
+    -->
+    <!--
+        audio标签的属性  (标签里的属性)
+        
+        src :　要嵌到页面的视频的ＵＲＬ；
+        controls : 显示或隐藏用户控制界面
+        autoplay : 媒体是否自动播放
+        loop　：　媒体是否循环播放
+        muted : 是否静音
+        preload : 该属性旨在告诉浏览器作者认为达到最佳的用户体验方式是什么
+                none : 表示用户不查看视频,服务器也想最小化访问流量,就是不进行缓存
+                metadata : 提示尽管作者认为用户不需要查看该视频,
+                            不过抓取元数据,(如长度) 还是很合理的;
+                auto : 就是用户需要视频提前优先加载,会跑流量
+                空字符串 : 也就是指代 auto值
+	-->
+</html>

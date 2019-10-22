@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            height: 100%;
+            overflow: hidden;
+        }
+        a {
+            text-decoration: none;
+            display: block;
+            color: black;
+
+        }
+
+        ul {
+            margin: 200px auto;
+            list-style: none;
+            width: 908px;
+            height: 38px;
+            background-color: deeppink;
+            border: 1px solid black;
+            overflow: hidden;
+        }
+
+        ul>li {
+            float: left;
+            height: 100%;
+            width: 100px;
+            text-align: center;
+            line-height: 38px;
+            
+        }
+        ul>li:not(:last-child){
+            border-right: 1px solid;
+            /* overflow: hidden; */
+        }
+
+        
+        ul>li>.down{
+            width: 100%;
+            height: 38px;
+            background: yellow;
+            transition: .5s;
+        }
+        ul>li:hover .down{
+            transform: translateY(-38px);
+
+        } 
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <audio></audio>
+        <ul class="nav">
+            <li>
+                <a href="javascript:;">我的主页</a>
+                <div class="down"></div>
+            </li>
+            <li>
+                <a href="javascript:;">新闻头条</a>
+                <div class="down"></div>
+            </li>
+            <li>
+                <a href="javascript:;">电视剧</a>
+                <div class="down"></div>
+            </li>
+            <li>
+                <a href="javascript:;">最新电影</a>
+                <div class="down"></div>
+            </li>
+            <li>
+                <a href="javascript:;">腿长一米八</a>
+                <div class="down"></div>
+            </li>
+            <li>
+                <a href="javascript:;">小说大全</a>
+                <div class="down"></div>
+            </li>
+            <li>
+                <a href="javascript:;">旅游团欧</a>
+                <div class="down"></div>
+            </li>
+            <li>
+                <a href="javascript:;">正品团购</a>
+                <div class="down"></div>
+            </li>
+            <li>
+                <a href="javascript:;">今日团购</a>
+                <div class="down"></div>
+            </li>
+
+        </ul>
+    </div>
+</body>
+<script>
+    var liNodes = document.querySelectorAll(".nav>li");
+    var audio = document.querySelector("audio");
+    for(var i = 0;i<liNodes.length;i++){
+        liNodes[i].addEventListener("mouseenter",function(){
+        audio.src="./01.mp3";
+        audio.play();
+    })
+    liNodes[i].addEventListener("mouseleave",function(){
+        // audio.src="./01.mp3";
+        audio.pause()
+        audio.load();
+    })
+    }
+    
+    
+</script>
+</html>

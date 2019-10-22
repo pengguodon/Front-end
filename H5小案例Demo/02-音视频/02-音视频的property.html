@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+	
+	<!-- chrome内核本地视频不可拖拽播放,网络视频可以 -->
+   <video width="800" height="700" controls="controls">
+   	<source src="02.mp4" type="video/mp4" ></source>
+   	当前浏览器不支持 video直接播放，点击这里下载视频： <a href="02.mp4">下载视频</a>
+   </video>
+   <audio src="01.mp3" controls="controls"></audio>
+</body>
+
+    <!-- 音视频js相关属性
+        currentTime : 开始到播放现在所用的时间(可读写)
+        duration    : 媒体总时间(只读)
+        muted       : 是否静音(可读写,相比于volume优先级更高)
+        muted和volume之间不会同步,要改就俩个一起改
+        volume      : 0.0-1.0的音量相对值(可读写)
+        paused      : 媒体是否暂停(只读)
+        ended       : 媒体是否播放完毕(只读)
+        error       : 媒体发送错误的时候,返回错误代码(只读)
+        currentSrc  : 以字符串的形式返回媒体地址(只读)
+
+
+        视频多的部分
+            poster : 视频播放前的预览图片 (读写)
+            width,height : 设置视频的尺寸 (读写)
+            videoWidth,videoHeight : 视频的实际尺寸 (只读)
+    
+    
+    -->
+</html>
