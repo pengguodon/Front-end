@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+   <div id="wrap">
+      <video src="http://www.17sucai.com/preview/1424582/2018-10-31/video/ckin.mp4"></video>
+      <div class="control">
+         <div class="btns">
+            <div class="start tu-image">&#xe60d</div>
+            <div class="stop tu-image">&#xe608</div>
+         </div>
+         <div class="progress">
+            <div class="wrap">
+               <div class="inner"></div>
+            </div>
+            <div class="deeppink"></div>
+         </div>
+         <div class="others">
+            <div class="time">
+               <span class="now">00:00:00</span>/<span class="all">00:00:00</span>
+            </div>
+            <div class="sound">
+               <div class="switch" id="hen">
+                  <span class="tu-image">&#xe616</span>
+               </div>
+               <div class="progress">
+                  <div class="wrap">
+                     <div class="inner"></div>
+                  </div>
+                  <div class="deeppink"></div>
+               </div>
+            </div>
+            <div class="full-screen">
+               <span class="tu-image last">&#xe61a</span>
+            </div>
+         </div>
+      </div>
+   </div>
+</body>
+<script src="./drag.js"></script>
+<script>
+   window.onload = function () {
+      //   var wrap = document.getElementsByClassName('wrap')[0];
+      var video = document.querySelector("#wrap > video");
+      var control = document.querySelector("#wrap > .control");
+      var inner = document.querySelector("#wrap > .control >.progress > .wrap > .inner");
+      var deeppink = document.querySelector("#wrap > .control >.progress > .deeppink");
+      var inner2 = document.querySelector("#wrap > .control > .others .progress > .wrap > .inner");
+      // console.log(inner2)
+      var deeppink2 = document.querySelector("#wrap > .control > .others .progress > .deeppink");
+      var start = document.getElementsByClassName("start")[0];
+      var stop = document.getElementsByClassName("stop")[0];
+      var progress = document.getElementsByClassName("progress")[0];
+      var allTime = document.getElementsByClassName("all")[0]
+      var now = document.getElementsByClassName('now')[0];
+      var switchNode = document.getElementsByClassName('switch')[0];
+      var progress2 = document.getElementsByClassName("progress")[1];
+
+      var fullScreen = document.getElementsByClassName('full-screen')[0];
+      var fullScreenSpan = document.querySelector('.others .last')
+      // 全屏
+      fullScreen.onclick = function () {
+         // 切换图标
+         fullScreenSpan.innerHTML = '1';
+         full_Screen()
+      }
+
+
+      //  全屏实现
+      var isFullScreen = false;
+      function full_Screen() {
+         if (isFullScreen) {
+            console.log(isFullScreen)
+
+            if (document.exitFullscreen) {
+               document.exitFullscreen();
+            }
+            else if (document.mozCancelFullScreen) {
+               document.mozCancelFullScreen();
+            }
+            else if (document.webkitCancelFullScreen) {
+               document.webkitCancelFullScreen();
+            }
+            else if (document.msExitFullscreen) {
+               document.msExitFullscreen();
+            }
+            // if (document.exitFullscreen) {
+            //     document.exitFullscreen();
+            // }
+            // else if (document.mozCancelFullScreen) {
+            //     document.mozCancelFullScreen();
+
+            // }
+            // else if (document.webkitCancelFullScreen) {
+            //     document.webkitCancelFullScreen();
+            // }
+            // else if (document.msExitFullscreen) {
+            //     document.msExitFullscreen();
+            // }
+            // if(typeof cfs != "undefined" && cfs) {
+            //     cfs.call(el);
+            // }
+
+
+            isFullScreen = false
+         }
+          else {
+            isFullScreen = true;
+            var docElm = document.documentElement;
+
+            // w3c
+            if (docElm.requestFullscreen) {
+               docElm.requestFullscreen();
+            }
+            // FireFox
+            else if (docElm.mozRequestFullScreen) {
+               docElm.mozRequestFullScreen();
+            }
+            // chrome等
+            else if (docElm.webkitRequestFullScreen) {
+               docElm.webkitRequestFullScreen();
+            }
+
+            // IE11
+            else if (docElm.msRequestFullscreen) {
+               docElm.msRequestFullscreen();
+            }
+         }
+
+      }
+
+
+      // 音量 span
+      var spanM = document.querySelector(".switch span");
+
+      video.width = document.documentElement.clientWidth;
+      // 宽等于视口宽
+      video.height = document.documentElement.clientHeight - control.offsetHeight;
+
+      // 每次窗口大小改变的时候w
+      window.onresize = function () {
+         // 大于等于600的时候再去改
+         if (document.documentElement.clientWidth >= 600) {
+            video.width = document.documentElement.clientWidth;
+            // 宽等于视口宽
+            video.height = document.documentElement.clientHeight - control.offsetHeight;
+         }
+      }
+
+      spanM.addEventListener('click', function () {
+         this.innerHTML = '&#xe608';
+         if (video.muted) {
+            video.muted = false
+            video.volume = 1;
+            this.innerHTML = '&#xe616';
+            flag = flag==0?1:flag;
+            inner2.style.left = deeppink2.style.width = flag * (progress2.clientWidth - inner2.offsetWidth) + 'px';
+         } else {
+            video.muted = true
+            video.volume = 0;
+            this.innerHTML = '&#xe608'
+            inner2.style.left = deeppink2.style.width = '0' + 'px';
+         }
+      })
+
+
+      // 进度条小滑块
+      var callback = {
+         move: function () {
+            deeppink.style.width = this.offsetLeft + 'px';
+
+            var cale = this.offsetLeft / (progress.clientWidth - inner.offsetWidth);
+            video.currentTime = video.duration * cale;
+            now.innerHTML = changeTime(video.currentTime);
+         }
+      }
+
+
+      var callback2 = {
+         move: function () {
+            deeppink2.style.width = this.offsetLeft + 'px';
+            var scale = this.offsetLeft / (progress2.clientWidth - inner2.offsetWidth);
+            video.volume = scale;
+            flag = scale;
+            if (video.volume == 0) {
+               video.muted = true;
+               spanM.innerHTML = '&#xe608'
+               inner2.style.left = deeppink2.style.width = '0' + 'px';
+            } else {
+               spanM.innerHTML = '&#xe616';
+               video.muted = false;
+               //   inner2.style.left = deeppink2.style.width = progress2.clientWidth - inner2.offsetWidth + 'px';
+
+            }
+         }
+      }
+      $.drag(inner, callback)
+      $.drag(inner2, callback2)
+
+      var time = 0;
+      // 同步音量
+      var flag = 0;
+
+      player()
+      function player() {
+         // 音量控制处理
+         inner2.style.left = deeppink2.style.width = progress2.clientWidth - inner2.offsetWidth + 'px';
+
+         video.addEventListener('loadeddata', function () {
+            //   时间显示
+            allTime.innerHTML = changeTime(video.duration);
+         })
+         video.addEventListener('click', startToggle)
+         // 进度条功能
+         progress.addEventListener('click', function (ev) {
+            ev = ev || event;
+            start.innerHTML = "&#xe6a5";
+            video.play();
+            time = setInterval(move, 10);
+
+            video.currentTime = video.duration * ((ev.clientX - this.offsetLeft) / (progress.clientWidth - inner.offsetWidth))
+
+
+         })
+         // 按钮块
+         stop.addEventListener("click", function () {
+            start.innerHTML = "&#xe60d";
+            // flag = !flag;
+            video.pause()
+            clearInterval(time)
+
+            inner.style.left = deeppink.style.width = 0 + 'px';
+            video.currentTime = 0;
+         })
+         start.addEventListener("click", startToggle)
+         function startToggle() {
+            if (video.paused) {
+               start.innerHTML = "&#xe6a5";
+               video.play();
+               time = setInterval(move, 10)
+            } else {
+               start.innerHTML = "&#xe60d";
+               // flag = !flag;
+               video.pause()
+               clearInterval(time)
+            }
+         }
+         function move() {
+            inner.style.left = deeppink.style.width = video.currentTime / video.duration * (progress.clientWidth - inner.offsetWidth) + 'px'
+            now.innerHTML = changeTime(video.currentTime);
+         }
+      }
+
+      // 转换时间格式
+      function changeTime(time) {
+         time = parseInt(time);
+         var h = tozero(Math.floor(time / 3600));
+         var m = tozero(Math.floor(time % 3600 / 60));
+         var s = tozero(Math.round(time % 3600));
+         return h + ":" + m + ':' + s;
+      }
+
+      // 补零
+      function tozero(num) {
+         var val = '';
+         if (num < 10) {
+            val = '0' + num;
+         } else {
+            val = val + num;
+         }
+         return val;
+      }
+
+   }
+</script>
+
+</html>
