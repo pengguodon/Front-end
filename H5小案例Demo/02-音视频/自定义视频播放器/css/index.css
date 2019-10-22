@@ -1,0 +1,308 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v4.0 | 20180602
+   License: none (public domain)
+*/
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
+  display: block;
+}
+/* HTML5 hidden-attribute fix for newer browsers */
+*[hidden] {
+  display: none;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+@font-face {
+  font-family: 'iconfont';
+  src: url('../font-image/iconfont.eot');
+  src: url('../font-image/iconfont.eot?#iefix') format('embedded-opentype'), url('../font-image/iconfont.woff') format('woff'), url('../font-image/iconfont.ttf') format('truetype'), url('../font-image/iconfont.svg#iconfont') format('svg');
+}
+.tu-image {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+#wrap {
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background-color: #383838;
+  border-radius: 2px;
+  font-size: 0;
+  min-width: 600px;
+}
+#wrap .control {
+  position: relative;
+  height: 25px;
+  background-color: #2A2A2A;
+  background-color: aliceblue;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#wrap .control .btns {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 55px;
+  height: 25px;
+}
+#wrap .control .btns .start {
+  box-sizing: border-box;
+  padding-left: 2px;
+  text-align: center;
+  line-height: 25px;
+  height: 25px;
+  float: left;
+  width: 40%;
+  font-size: 20px;
+  color: deeppink;
+}
+#wrap .control .btns .stop {
+  font-size: 13px;
+  box-sizing: border-box;
+  padding-right: 5px;
+  text-align: center;
+  line-height: 25px;
+  height: 25px;
+  float: left;
+  width: 60%;
+  color: deeppink;
+  margin-top: 1px;
+}
+#wrap .control > .progress {
+  position: relative;
+  height: 25px;
+  margin: 0 230px 0 55px;
+}
+#wrap .control > .progress .wrap {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  margin-top: 11px;
+  background-color: #737373;
+}
+#wrap .control > .progress .wrap .inner {
+  position: absolute;
+  margin-top: -2px;
+  width: 9px;
+  height: 7px;
+  background-color: red;
+  border-radius: 3px;
+}
+#wrap .control > .progress .deeppink {
+  position: absolute;
+  height: 3px;
+  margin-top: 11px;
+  width: 0;
+  background-color: deeppink;
+  left: 0;
+  top: 0;
+}
+#wrap .control > .others {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 230px;
+  height: 25px;
+}
+#wrap .control > .others > div {
+  height: 25px;
+  float: left;
+}
+#wrap .control > .others .time {
+  box-sizing: border-box;
+  padding-left: 10px;
+  color: deeppink;
+  line-height: 25px;
+  width: 120px;
+  font-size: 10px;
+  font-weight: 800;
+}
+#wrap .control > .others .sound {
+  width: 80px;
+}
+#wrap .control > .others .sound .switch {
+  float: left;
+  width: 20px;
+  height: 25px;
+}
+#wrap .control > .others .sound .switch > span {
+  height: 25px;
+  line-height: 25px;
+  display: inline-block;
+  width: 20px;
+  color: deeppink;
+}
+#wrap .control > .others .sound .progress {
+  position: relative;
+  height: 25px;
+  width: 60px;
+  display: inline-block;
+}
+#wrap .control > .others .sound .progress .wrap {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  margin-top: 11px;
+  background-color: #737373;
+}
+#wrap .control > .others .sound .progress .wrap .inner {
+  position: absolute;
+  margin-top: -2px;
+  width: 9px;
+  height: 7px;
+  background-color: red;
+  border-radius: 3px;
+}
+#wrap .control > .others .sound .progress .deeppink {
+  background-color: #fff;
+  position: absolute;
+  height: 3px;
+  margin-top: 11px;
+  width: 0;
+  background-color: deeppink;
+  left: 0;
+  top: 0;
+}
+#wrap .control > .others .full-screen > span {
+  color: deeppink;
+  display: inline-block;
+  height: 25px;
+  font-size: 23px;
+  line-height: 25px;
+  width: 30px;
+  text-align: center;
+}
