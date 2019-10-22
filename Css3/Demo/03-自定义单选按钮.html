@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+   *{
+      margin: 0;
+      padding:0;
+   }
+   label{
+      position: relative;
+      float: left;
+      width: 200px;
+      height: 200px;
+      border: 2px dashed;
+      overflow: hidden;
+      border-radius: 40px;
+   }
+   label >  span  {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+   }
+   input{
+      position: absolute;
+      left: -50px;
+      top: -50px;
+
+   }
+
+   input:checked  +span{
+      background: deeppink;
+   }
+   </style>
+</head>
+<body>
+   <!-- 单选按钮 -->
+   <label >
+         <input type="radio"   name="id1">
+         <span></span>
+         <!-- 包裹在label标签内，内容会关联起来 -->
+   </label>
+   <label >
+         <input type="radio"   name="id1">
+         <span></span>
+         <!-- 包裹在label标签内，内容会关联起来 -->
+   </label>
+   <label >
+         <input type="radio"   name="id1">
+         <span></span>
+         <!-- 包裹在label标签内，内容会关联起来 -->
+   </label>
+</body>
+</html>

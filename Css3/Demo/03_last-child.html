@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+
+      }
+      /* 找到最后一个儿子 */
+      ul :last-child{
+         color: blueviolet;
+         font-size: 40px;
+      }
+
+      /* 只有一个 */
+      div p:only-child{
+         color: aqua;
+         font-size: 50px;
+      }
+      #warp p:only-of-type{
+         color: black;
+         background-color:green;
+      }
+      p:first-of-type{
+         border: 2px solid;
+      }
+   </style>
+</head>
+
+<body>
+   <ul id="warp">
+      <li>1</li>
+      <p>p</p>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+   </ul>
+   <div>
+      <p>only</p>
+   </div>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+
+      /* 伪元素一共五种
+
+         ::after
+
+       */
+      /* .wrap::before{
+         content: "";
+         width: 200px;
+         height: 200px;
+         display: block;
+         background-color: pink;
+      } */
+
+      /* ::first-letter{
+         color: aqua;
+         font-size: 20px;
+         font-weight: 800;
+      } */
+
+      /* ::first-line{
+         background-color: red;
+         color: blue;
+         font-size: 25px;
+
+      } */
+
+      /* 选择的状态 */
+      div::selection{
+         background-color: red;
+         color: blueviolet;
+         font-size: 30px;
+      }
+   </style>
+</head>
+<body>
+   <div class="wrap">彭国东</div>
+</body>
+</html>

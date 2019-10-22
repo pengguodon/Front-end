@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+
+      }
+
+      /* #warp elm:nth-of-type(1)
+      /* 找到#warp底下所有的子元素,并且选中第一个elm 不在乎前后*/
+
+
+      li{
+         width: 100px;
+         height: 100px;
+         float:left;
+         margin-left: 20px;
+         list-style: none;
+      }
+      li:not(:last-child){
+         border-right: 1px solid red;
+      }
+      li:empty{
+         background-color: red;
+      }
+      /* 内容必须为空 */
+   </style>
+</head>
+
+<body>
+   <ul id="warp">
+      <li></li>
+      <li>  </li>
+
+   </ul>
+</body>
+
+</html>
